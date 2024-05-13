@@ -48,20 +48,7 @@ void Client::MakeOrder(Shop& shop)
         {
             cout << "Неверный номер продукта. Пожалуйста, попробуйте снова.\n\nИли введите -1 для возврата в предыдущее меню.\n\n";
         }
-    
     }
-}
-void Client::RemoveProductFromOrder(const Product& product) {         // Удаляем продукт из заказа
-                                                                 
-    for (auto it = order.order_products.begin(); it != order.order_products.end(); ++it) {
-        if (it->GetName() == product.GetName()) {
-           
-            order.order_products.erase(it);
-            cout << "Продукт удален из заказа!\n";
-            return;
-        }
-    }
-    cout << "Продукт не найден в заказе.\n";
 }
 bool Client::CanAffordOrder() {
     // Получаем общую стоимость заказа
@@ -107,7 +94,7 @@ void Client::SavePurchaseHistory() {
         file << "Продукт: " << product.GetName() << "\n";
         file << "Цена: " << product.GetPrice() << "\n\n";
     }
-   
+
     file << "Сумма покупки: " << order.GetTotal() << "\n\n\n";
     file.close();  // Закрываем файл
     cout << "История покупок успешно сохранена в файл.\n";

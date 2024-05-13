@@ -7,28 +7,26 @@
 
 using namespace std;
 
-
 int main()
 {
     setlocale(LC_ALL, "Russian");
+    Product apple("Яблоко", 10.0);
+    Product bread("Хлеб", 15.0);
+
+    // Создаем овощи
+    Vegetable carrot("Морковь", 7.0, "овощ");
+    Vegetable potato("Картофель", 5.0, "овощ");
+
+    Shop shop; // создали наш магазин
+
+    // Добавляем продукты в магазин
+    shop.AddProduct(apple);
+    shop.AddProduct(bread);
+    shop.AddProduct(carrot);
+    shop.AddProduct(potato);
 
     bool continueShopping = true;
     while (continueShopping) {
-        Shop shop;
-
-        // Создаем продукты
-        Product apple("Яблоко", 10.0);
-        Product bread("Хлеб", 15.0);
-
-        // Создаем овощи
-        Vegetable carrot("Морковь", 7.0, "овощ");
-        Vegetable potato("Картофель", 5.0, "овощ");
-
-        // Добавляем продукты и овощи в магазин
-        shop.AddProduct(apple);
-        shop.AddProduct(bread);
-        shop.AddProduct(carrot);
-        shop.AddProduct(potato);
 
         // Приветствуем пользователя
         shop.Welcome();

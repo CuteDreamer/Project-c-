@@ -25,8 +25,6 @@ public:
 		cout << "Спасибо за покупку! Хорошего дня! (деструктор)" << "\n\n";
 	}
 
-	
-
 	void SetMoney(int money);
 	int GetMoney() const;
 

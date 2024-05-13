@@ -10,7 +10,6 @@ class Shop
 public:
 	vector<Product> all_products;                     // создали список продуктов
 
-
 	void Welcome();
 	bool AskToContinue();
 	void AddProduct(const Product& product);
