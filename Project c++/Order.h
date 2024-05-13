@@ -16,7 +16,7 @@ public:
     float ÑalculateTotal();
     double GetTotal() const;
 
-    ~Order() { cout << "Çàêàç âûïîëíåí!\n\n"; cout << "ÑËÅÄÓÞÙÈÈÈÈÈÈÉ!!!! (äåñòðóêòîð) \n\n\n\n\n\n\n";};
+    ~Order() { cout << "Çàêàç âûïîëíåí!\n\n"; cout << "ÑËÅÄÓÞÙÈÈÈÈÈÈÉ!!!! (äåñòðóêòîð) \n\n\n\n\n\n\n";}; 
 };
 
 

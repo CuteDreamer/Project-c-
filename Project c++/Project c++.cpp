@@ -8,13 +8,12 @@
 using namespace std;
 
 
-
-
 int main()
 {
-	setlocale(LC_ALL, "Russian");
+    setlocale(LC_ALL, "Russian");
 
-    while (true) {
+    bool continueShopping = true;
+    while (continueShopping) {
         Shop shop;
 
         // Создаем продукты
@@ -37,9 +36,19 @@ int main()
         // Создаем клиента с 100 денег
         Client client(100);
 
-        shop.AskToContinue();
+        continueShopping = shop.AskToContinue();
+        if (!continueShopping) {
+            break;
+        }
+            
         shop.ShowProducts();
-        shop.AskToContinue();
+
+        continueShopping = shop.AskToContinue();
+
+        if (!continueShopping) {
+            break;
+        }
+
         shop.ShowBuyProducts();
         client.MakeOrder(shop);
         client.ShowOrder();
