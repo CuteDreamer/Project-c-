@@ -7,7 +7,6 @@ using namespace std;
 class Order
 {
 	float sum;
-
    
 public:
     vector<Product> order_products;                          // cоздали список продуктов
