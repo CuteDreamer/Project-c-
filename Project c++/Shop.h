@@ -1,6 +1,8 @@
 #pragma once
+#include <fstream> 
 #include <iostream>
 #include "Product.h"
+#include "Order.h"
 using namespace std;
 class Shop
 {
@@ -15,5 +17,6 @@ public:
 	void ShowProducts();
 	void ShowVegetables();
 	void ShowBuyProducts();
+	
 };
 

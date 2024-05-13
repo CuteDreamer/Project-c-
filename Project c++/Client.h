@@ -40,5 +40,6 @@ public:
 	void RemoveProductFromOrder(const Product& product);
 	bool CanAffordOrder();
 	void CompletePurchase();
+	void SavePurchaseHistory();
 };
 

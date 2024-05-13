@@ -14,7 +14,7 @@ public:
 
     void AddProductToOrder(const Product& product);
     float ÑalculateTotal();
-    
+    double GetTotal() const;
 
     ~Order() { cout << "Çàêàç âûïîëíåí!\n\n"; cout << "ÑËÅÄÓÞÙÈÈÈÈÈÈÉ!!!! (äåñòðóêòîð) \n\n\n\n\n\n\n";};
 };

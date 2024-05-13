@@ -1,8 +1,11 @@
+#include <fstream> 
 #include "Shop.h"
 #include <string>
 #include <vector>
 #include "Product.h"
 #include "Vegetable.h"
+#include "Order.h"
+
 
 
 
@@ -36,7 +39,7 @@ bool Shop::AskToContinue()                        // этот метод спрашивает готов
 	
 }
 
-void Shop::AddProduct(const Product& product)     // этот метод добавляет продукты в  админ это делает
+void Shop::AddProduct(const Product& product)     // этот метод добавляет продукты в админ это делает
 {
 	all_products.push_back(product);
 }

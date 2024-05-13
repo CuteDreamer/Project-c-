@@ -46,6 +46,7 @@ int main()
         client.ShowTotal();
         client.CompletePurchase();
         client.GetMoney();
+        client.SavePurchaseHistory();
     }
 }
 

@@ -10,3 +10,10 @@ float Order::ÑalculateTotal()
     }
     return total;
 }
+double Order::GetTotal() const {
+    double total = 0.0;
+    for (const auto& product : order_products) {
+        total += product.GetPrice();
+    }
+    return total;
+}

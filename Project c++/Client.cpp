@@ -1,6 +1,7 @@
 #include "Client.h"
 #include "Shop.h"
 #include "Order.h"
+#include <ctime>
 void Client::SetMoney(int money)
 {
 	this->money = money;
@@ -86,4 +87,28 @@ void Client::CompletePurchase() {
         // Если нет, выводим сообщение об ошибке
         cout << "У вас недостаточно средств для оплаты этого заказа.\n\n";
     }
+}
+
+
+void Client::SavePurchaseHistory() {
+    ofstream file("purchase_history.txt", ios::app);  // Создаем файловый поток для записи
+
+    time_t now = std::time(0);
+    char dt[26];
+    ctime_s(dt, sizeof dt, &now);
+
+    if (!file) {  // Если файл не удалось открыть, выводим сообщение об ошибке
+        cout << "Не удалось открыть файл для записи.\n";
+        return;
+    }
+    file << "Время покупки: " << dt << "\n\n";
+    // Записываем историю покупок в файл
+    for (const auto& product : order.order_products) { 
+        file << "Продукт: " << product.GetName() << "\n";
+        file << "Цена: " << product.GetPrice() << "\n\n";
+    }
+   
+    file << "Сумма покупки: " << order.GetTotal() << "\n\n\n";
+    file.close();  // Закрываем файл
+    cout << "История покупок успешно сохранена в файл.\n";
 }
