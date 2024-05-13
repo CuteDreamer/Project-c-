@@ -8,6 +8,8 @@ using namespace std;
 class Client
 {
 	int money;
+	bool CanAffordOrder();
+	
 
 public:
 
@@ -19,6 +21,7 @@ public:
 	Client(int money)
 	{
 		SetMoney(money);
+		
 	}
 	~Client()
 	{
@@ -35,8 +38,7 @@ public:
 	void ShowOrder();
 	void ShowTotal();
 	void MakeOrder(Shop& shop);
-	void RemoveProductFromOrder(const Product& product);
-	bool CanAffordOrder();
+	
 	void CompletePurchase();
 	void SavePurchaseHistory();
 };

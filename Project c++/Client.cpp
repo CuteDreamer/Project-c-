@@ -76,7 +76,6 @@ void Client::CompletePurchase() {
     }
 }
 
-
 void Client::SavePurchaseHistory() {
     ofstream file("purchase_history.txt", ios::app);  // Создаем файловый поток для записи
 

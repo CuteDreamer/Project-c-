@@ -18,7 +18,7 @@ void Shop::Welcome()                              // этот метод приветствует пол
 
 
 
-bool Shop::AskToContinue() {
+bool Shop::AskToContinue() {                             // «апрос на продолжение работы с программой
     string answer;
     cout << "’отите ли вы продолжить? (yes/no): ";
     getline(cin, answer);
@@ -59,7 +59,7 @@ void Shop::ShowVegetables()                      // показываем все овощи с имене
 		}
 	}
 }
-void Shop::ShowBuyProducts()
+void Shop::ShowBuyProducts()                      // ѕоказываем продукты с индексом дл€ наполнени€ корзины
 {
 	for (int i = 0; i < all_products.size(); i++)
 	{
