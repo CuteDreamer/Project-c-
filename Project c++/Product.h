@@ -23,8 +23,6 @@ public:
 	
 	virtual ~Product() {}
 
-
-public:
 	string GetName() const;
 	float GetPrice() const;
 

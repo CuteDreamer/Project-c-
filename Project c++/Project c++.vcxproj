@@ -127,6 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="Application.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Product.cpp" />
@@ -135,6 +137,8 @@
     <ClCompile Include="Vegetable.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Admin.h" />
+    <ClInclude Include="Application.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="Product.h" />

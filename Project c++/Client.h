@@ -13,7 +13,7 @@ class Client
 
 public:
 
-	Client() : Client(100)                                  // по умолчанию у клиента 10000 денег
+	Client() : Client(100)                                  // по умолчанию у клиента 100 денег
 	{
 
 	}
@@ -41,5 +41,6 @@ public:
 	
 	void CompletePurchase();
 	void SavePurchaseHistory();
+	void EditOrder();
 };
 

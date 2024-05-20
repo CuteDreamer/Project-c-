@@ -5,13 +5,14 @@
 #include "Product.h"
 #include "Vegetable.h"
 #include "Order.h"
+#include "Admin.h"
 
 
 
 
 void Shop::Welcome()                              // этот метод приветствует пользователя
 {
-	cout << "Добрый день! Рады вас приветствовать в нашем продуктовом мазагине ShopShop\n\n";
+	cout << "Добрый день! Рады вас приветствовать в нашем продуктовом магазине ShopShop\n\n";
 	cout << "У нас вы можете приобрести свежайшие фермерские продукты высочайшего качества по хорошим ценам! \n\n";
 	cout << "Сейчас мы ознакомим вас с нашим ассортиментом и вы купите себе что-нибудь вкусненькое!\n\n";
 }
@@ -30,6 +31,13 @@ bool Shop::AskToContinue() {                             // Запрос на продолжени
         cout << "\n\nДо новых встреч!!! Будем рады вас видеть!!\n\n\n";
         return false;
     }
+	else if (answer == "admin") {
+		cout << "\n\nВключаем режим администратора!!!\n\n\n";
+		Admin admin;
+		admin.ManageShop(*this);
+		return true;
+		
+	}
     else {
         return AskToContinue();
     }

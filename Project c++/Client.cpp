@@ -18,9 +18,10 @@ void Client::AddProductToOrder(const Product& product) {               // добавл
 }
 void Client::ShowOrder() {                                             // показываем итоговый заказ
     cout << "\n\nВот весь ваш заказ: \n\n";
-    for (const auto& product : order.order_products) {
-		cout << "Продукт: " << product.GetName() << "\n";
-		cout << "Цена: " << product.GetPrice() << "\n\n";
+    for (int i = 0; i < order.order_products.size(); i++) {
+        cout << "Номер продукта: " << i + 1 << "\n";
+        cout << "Продукт: " << order.order_products[i].GetName() << "\n";
+        cout << "Цена: " << order.order_products[i].GetPrice() << "\n\n";
     }
 }
 void Client::ShowTotal() {                                             // показываем общую сумму заказа
@@ -49,6 +50,46 @@ void Client::MakeOrder(Shop& shop)
             cout << "Неверный номер продукта. Пожалуйста, попробуйте снова.\n\nИли введите -1 для возврата в предыдущее меню.\n\n";
         }
     }
+    ShowOrder();
+    while (true) {
+        cout << "\nВведите 1, чтобы оплатить заказ, или 2, чтобы редактировать заказ: \n";
+        int choice;
+        cin >> choice;
+
+        if (choice == 1) {
+            break;
+        }
+        else if (choice == 2) {
+            EditOrder();
+        }
+        else {
+            cout << "Неверный выбор. Пожалуйста, попробуйте снова.\n";
+        }
+    }
+}
+void Client::EditOrder() {
+    int productIndex;
+    while (true) {
+        ShowOrder();
+        cout << "\nВведите номер продукта, который вы хотите удалить из заказа, или -1, чтобы завершить редактирование: \n";
+        cin >> productIndex;
+
+        if (productIndex == -1) {
+            break;
+            ShowOrder();
+        }
+
+        productIndex--;
+
+        if (productIndex >= 0 && productIndex < order.order_products.size()) {
+            order.order_products.erase(order.order_products.begin() + productIndex);
+            cout << "\nПродукт удален из заказа!\n";
+            ShowOrder();
+        }
+        else {
+            cout << "Неверный номер продукта. Пожалуйста, попробуйте снова.\n\nИли введите -1 для возврата в предыдущее меню.\n\n";
+        }
+    }
 }
 bool Client::CanAffordOrder() {
     // Получаем общую стоимость заказа
@@ -64,31 +105,40 @@ bool Client::CanAffordOrder() {
     }
 }
 void Client::CompletePurchase() {
-    // Проверяем, может ли клиент оплатить заказ
-    if (CanAffordOrder()) {
-        // Если да, вычитаем стоимость заказа из баланса клиента
-        money -= order.СalculateTotal();
-        cout << "Покупка успешно совершена!\n\n";
-    }
-    else {
-        // Если нет, выводим сообщение об ошибке
-        cout << "У вас недостаточно средств для оплаты этого заказа.\n\n";
+    while (true) {
+        // Вычисляем общую стоимость заказа
+        float totalCost = order.СalculateTotal();
+
+        // Проверяем, может ли клиент оплатить заказ
+        if (money >= totalCost) {
+            // Если да, вычитаем стоимость заказа из баланса клиента
+            money -= totalCost;
+            cout << "Покупка успешно совершена!\n\n";
+            break;
+        }
+        else {
+            // Если нет, выводим сообщение об ошибке
+            float shortage = totalCost - money;
+            cout << "У вас недостаточно средств для оплаты этого заказа. Вам не хватает " << shortage << " денег.\n\n";
+            cout << "Вы можете редактировать ваш заказ.\n";
+            EditOrder();
+        }
     }
 }
 
 void Client::SavePurchaseHistory() {
-    ofstream file("purchase_history.txt", ios::app);  // Создаем файловый поток для записи
+    ofstream file("purchase_history.txt", ios::app);         // Создаем файловый поток для записи
 
     time_t now = std::time(0);
     char dt[26];
     ctime_s(dt, sizeof dt, &now);
 
-    if (!file) {  // Если файл не удалось открыть, выводим сообщение об ошибке
+    if (!file) {                                             // Если файл не удалось открыть, выводим сообщение об ошибке
         cout << "Не удалось открыть файл для записи.\n";
         return;
     }
     file << "Время покупки: " << dt << "\n\n";
-    // Записываем историю покупок в файл
+                    // Записываем историю покупок в файл
     for (const auto& product : order.order_products) { 
         file << "Продукт: " << product.GetName() << "\n";
         file << "Цена: " << product.GetPrice() << "\n\n";
