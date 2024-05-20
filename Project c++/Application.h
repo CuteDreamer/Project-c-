@@ -9,6 +9,6 @@ class Application
 public:
     
     int GetMoney();
-    void Login(Shop& shop);
+   // void Login(Shop& shop);
     void AskMoney();
 };
