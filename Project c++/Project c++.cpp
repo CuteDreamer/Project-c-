@@ -5,14 +5,17 @@
 #include "Shop.h"
 #include "Vegetable.h"
 #include "Application.h"
+#include "Properties.h"
 
 using namespace std;
 
 int main()
 {
 
-
+    Properties console;
+    console.SetupConsole();
     setlocale(LC_ALL, "Russian");
+    
     Shop shop; // создали наш магазин
     Application app;
     Product apple("Яблоко", 30.0);

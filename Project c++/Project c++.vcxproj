@@ -133,6 +133,7 @@
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Product.cpp" />
     <ClCompile Include="Project c++.cpp" />
+    <ClCompile Include="Properties.cpp" />
     <ClCompile Include="Shop.cpp" />
     <ClCompile Include="Vegetable.cpp" />
   </ItemGroup>
@@ -142,6 +143,7 @@
     <ClInclude Include="Client.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="Product.h" />
+    <ClInclude Include="Properties.h" />
     <ClInclude Include="Shop.h" />
     <ClInclude Include="Vegetable.h" />
   </ItemGroup>
